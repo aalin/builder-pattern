@@ -14,4 +14,4 @@ rm -rf /root/.ssh
 
 npm run build:ci
 
-tar cvvf /app.tar dist/
+tar cvvf /app.tar dist/ start-app.js package.json package-lock.json
