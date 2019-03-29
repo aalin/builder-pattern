@@ -9,9 +9,9 @@ GIT_REVISION=$(git rev-parse --short HEAD)
 GIT_BRANCH=${GIT_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}
 PACKAGE_JSON_VERSION=$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[ ",]//g')
 
-APP_NAME=demo
-APP_BRANCH=${GIT_BRANCH##*/}
-BUILDER_NAME=${APP_NAME}__builder
+SERVICE_NAME=demo
+SERVICE_BRANCH=${GIT_BRANCH##*/}
+BUILDER_NAME=${SERVICE_NAME}__builder
 VERSION=v${PACKAGE_JSON_VERSION}-${BUILD_NUMBER}__${APP_BRANCH}
 BUILD_TAG=${IMAGE_NAME}:${VERSION}
 BUILD_TAG=${IMAGE_NAME}:${VERSION}
@@ -72,7 +72,7 @@ buildAppImage () {
   echo -e "\033[32mSuccessfully built ${BUILD_TAG}, also tagged as ${LATEST_TAG}\033[0m"
   echo "IMAGE_NAME=${BUILD_TAG}" > build.properties
   local service_image=${BUILD_TAG##*/}
-  echo -e "SERVICE_NAME=${SERVICE_NAME}\nSERVICE_BRANCH=${BRANCH_NAME}\nSERVICE_IMAGE=${service_image}" > deploy.properties
+  echo -e "SERVICE_NAME=${SERVICE_NAME}\nSERVICE_BRANCH=${SERVICE_BRANCH}\nSERVICE_IMAGE=${service_image}" > deploy.properties
 }
 
 buildBuildImage
