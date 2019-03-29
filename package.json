@@ -1,0 +1,23 @@
+{
+  "name": "builder-pattern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "node start-app.js",
+    "build": "npm run build:ci -- --progress",
+    "build:watch": "npm run build -- --watch",
+    "build:ci": "webpack --config webpack.config.js --color",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "raw-loader": "^2.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
